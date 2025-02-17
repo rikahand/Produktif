@@ -2,8 +2,9 @@
 
 // Acara 3
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ManagementUserController;
 Route::get('/', function () {
+
     return view('welcome');
 });
 Route::get('/foo', function () {
@@ -14,7 +15,7 @@ Route::get('/foo/{id}',function ($id){
 });
 
 //Route::get('/user', 'UserController@index');
-Route::get ('/user', [UserController::class,'index']);
+// Route::get ('/user', [UserController::class,'index']);
 
 // Route::get($uri, $callback);
 // Route::post($uri, $callback);
@@ -36,32 +37,32 @@ Route::redirect('/coba','/sini');
     });
 
 
-Route::get('/userr/{name?}', function($name=null){
-    return $name? "Hello, $name!" : "Hello, Guest!";
-});
-Route::get('users/{name?}', function($name='Ayu'){
-    return $name? "Hello, $name!" : "Hello, Guest!";
-});
+// Route::get('/userr/{name?}', function($name=null){
+//     return $name? "Hello, $name!" : "Hello, Guest!";
+// });
+// Route::get('users/{name?}', function($name='Ayu'){
+//     return $name? "Hello, $name!" : "Hello, Guest!";
+// });
 
-Route::get('user1/{name}', function ($name) {
-    return "Hello, $name!";
-})->where('name', '[A-Za-z]+');
+// Route::get('user1/{name}', function ($name) {
+//     return "Hello, $name!";
+// })->where('name', '[A-Za-z]+');
 
-Route::get('user2/{id}', function ($id){
-    return "User ID $id";
-})->where('id', '[0-9]+');
+// Route::get('user2/{id}', function ($id){
+//     return "User ID $id";
+// })->where('id', '[0-9]+');
 
-Route::get('user3/{id}/{name}', function ($id, $name){
-    return "User ID: $id name: $name";
-})->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
+// Route::get('user3/{id}/{name}', function ($id, $name){
+//     return "User ID: $id name: $name";
+// })->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
 
-Route::get('user4/{id}', function ($id) {
-    return "User ID: $id"; // Only executed if {id} is numeric
-});
+// Route::get('user4/{id}', function ($id) {
+//     return "User ID: $id"; // Only executed if {id} is numeric
+// });
 
-Route::get('search/{search}',function ($search){
-    return $search;
-})->where('search', '.*');
+// Route::get('search/{search}',function ($search){
+//     return $search;
+// })->where('search', '.*');
 
 use App\Http\Controllers\UserProfileController;
 
@@ -69,7 +70,7 @@ Route::get('user5/profile', function(){
     return "Ini adalah halaman user 5.";
     })->name('profile.user5');
 
-Route::get('user6/profile', [UserController::class, 'show'])->name('profile.user6');
+// Route::get('user6/profile', [UserController::class, 'show'])->name('profile.user6');
 
 
 // Acara 4
@@ -130,7 +131,7 @@ Route::name('admin.')->group(function (){
 
 //tambahan
 // Route::post('/user/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-Route::match(['get', 'post'], '/user/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+// Route::match(['get', 'post'], '/user/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 // Acara 4
 //generate route ke route bersama
@@ -180,4 +181,7 @@ Route::name('admin.')->group(function (){
 });
 //tambahan
 // Route::post('/user/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-Route::match(['get', 'post'], '/user/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+// Route::match(['get', 'post'], '/user/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+// Route::get('/use', [ManagementUserController::class, 'index']);
+Route::resource('/use', ManagementUserController::class);
