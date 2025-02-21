@@ -3,6 +3,7 @@
 // Acara 3
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ManagementUserController;
+use App\Http\Controllers\frontend\HomeController;
 Route::get('/', function () {
 
     return view('welcome');
@@ -185,3 +186,13 @@ Route::name('admin.')->group(function (){
 
 // Route::get('/use', [ManagementUserController::class, 'index']);
 Route::resource('/use', ManagementUserController::class);
+
+Route::get("/home",function(){
+    return view("home");
+});
+
+Route::group(['namespace'=>'App\Http\Controllers\frontend'],function()
+    {
+        Route::resource('/home',HomeController::class);
+    });
+
