@@ -94,15 +94,15 @@ Route::get('/user/{id}/profile', function ($id) {
 })->name('profile');
 
 //Middleware
-Route::middleware(['first', 'second'])->group(function () {
-    Route::get('/', function () {
-        //
-    });
+// Route::middleware(['first', 'second'])->group(function () {
+//     Route::get('/', function () {
+//         //
+//     });
 
-    Route::get('user/profile', function () {
-        //
-    });
-});
+//     Route::get('user/profile', function () {
+//         //
+//     });
+// });
 
 //namespaces
 Route::namespace('Admin')->group(function (){
@@ -149,15 +149,7 @@ Route::get('/redirect-profile', function () {
 Route::get('/user/{id}/profile', function ($id) {
     return view('profile', ['id' => $id]);
 })->name('profile');
-//Middleware
-Route::middleware(['first', 'second'])->group(function () {
-    Route::get('/', function () {
-        //
-    });
-    Route::get('user/profile', function () {
-        //
-    });
-});
+
 //namespaces
 Route::namespace('Admin')->group(function (){
     //
@@ -196,3 +188,7 @@ Route::group(['namespace'=>'App\Http\Controllers\frontend'],function()
         Route::resource('/home',HomeController::class);
     });
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
