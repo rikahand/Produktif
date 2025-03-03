@@ -18,7 +18,7 @@
     <div class="col-lg-12">
         <section class="panel">
             <header class="panel-heading">
-                {{ isset($admin_lecturer) ? 'Mengubah' : 'Menambahkan' }} Pengalaman Kerja
+                {{ isset($admin_lecturer) ? 'Mengubah' : 'Menambahkan' }} Pendidikan
 </header>
 @if ($errors->any())
 <div class="alert alert-danger">
@@ -32,11 +32,11 @@
 @endif
 <div class="panel-body>
 <div class="form">
-    <form class="form-validate form-horizontal" id="pengalaman_kerja_form" method="POST"
-    action="{{ isset($pengalaman_kerja.)? route('pengalaman_kerja update',$pengalaman_kerja->id);
-    route('pengalaman_kerja.store') }}>
+    <form class="form-validate form-horizontal" id="pendidikan_form" method="POST"
+    action="{{ isset($pendidikan)? route('pendidikan update',$pendidikan->id);
+    route('pendidikan.store') }}>
     {!! csrf_field() !!}
-    {!! isset($pengalaman_kerja.store'}}">
+    {!! isset($pendidikan) ? method_field('PUT') :''!!}
     <input type="hidden" name="id" value="{{$pengalaman_kerja->id}}"><br/>
     <div class="form-group">
 

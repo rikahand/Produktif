@@ -6,6 +6,7 @@ use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\PengalamanKerjaController;
+use App\Http\Controllers\backend\PendidikanController;
 Route::get('/', function () {
 
     return view('welcome');
@@ -177,12 +178,10 @@ Route::name('admin.')->group(function (){
 //tambahan
 // Route::post('/user/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 // Route::match(['get', 'post'], '/user/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-Route::group(['namespace'=>'Backend'],function()
-    {
-        Route::resource('dashboard','DashboardController');
-        Route::resource('pendidikan','PendidikanController');
-        Route::resource('pengalaman_kerja','PengalamanKerjaController');
-    });
+Route::group(['prefix' => 'backend'], function() {
+    Route::resource('dashboard', DashboardController::class);
+    Route::resource('pendidikan', PendidikanController::class);
+});
 
 // Route::get('/use', [ManagementUserController::class, 'index']);
 Route::resource('/use', ManagementUserController::class);
