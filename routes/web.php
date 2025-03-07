@@ -7,6 +7,8 @@ use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\PengalamanKerjaController;
 use App\Http\Controllers\backend\PendidikanController;
+use App\Http\Controllers\PegawaiController;
+
 Route::get('/', function () {
 
     return view('welcome');
@@ -199,9 +201,20 @@ Route::group(['namespace'=>'App\Http\Controllers\frontend'],function()
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//buat route create session
+Route::get('/session/create', [App\Http\Controllers\SessionController::class, 'create']);
+//buat route show session
+Route::get('/session/show',[App\Http\Controllers\SessionController::class,'show']);
 
+// buat route delete session
+Route::get('/session/delete',[App\Http\Controllers\SessionController::class,'delete']);
 //acara 8
-Route::group(['namespace'=>'App\Http\Controllers\backend'],function()
-    {
-        Route::resource('/dashboard',DashboardController::class);
-    });
+Route::group(['namespace'=>'App\Http\Controllers\backend'],function()    {
+        Route::resource('/dashboard',DashboardController::class);});
+
+Route::get('/pegawai/{nama}', [PegawaiController::class, 'index']);
+
+//Menangkap data melalui inputan 
+
+Route::get('formulir',[PegawaiController::class, 'formulir']);
+Route::post('/formulir/proses',[PegawaiController::class,'proses'])->name('formulir.proses');
