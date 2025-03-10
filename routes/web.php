@@ -8,6 +8,7 @@ use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\PengalamanKerjaController;
 use App\Http\Controllers\backend\PendidikanController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\cobaController;
 
 Route::get('/', function () {
 
@@ -216,5 +217,7 @@ Route::get('/pegawai/{nama}', [PegawaiController::class, 'index']);
 
 //Menangkap data melalui inputan 
 
-Route::get('formulir',[PegawaiController::class, 'formulir']);
-Route::post('/formulir/proses',[PegawaiController::class,'proses'])->name('formulir.proses');
+Route::get('/formulir',[PegawaiController::class, 'formulir']);
+Route::post('/formulir/proses',[PegawaiController::class,'proses']);
+Route::get('/Cobaerror/{nama}',[cobaController::class, 'index']);
+

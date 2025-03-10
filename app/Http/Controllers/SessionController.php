@@ -17,12 +17,19 @@ echo"Data telah di hapus dari session.";
 }
 
 
+
+
+
+
+
     //menampilkan isi session
     public function show(Request $request) {
         if($request->session()->has('nama')){
 echo $request->session()->get('nama');
         } else {
             echo'tidak ada data dalam session.';
+
         }
+        
     }
 }
