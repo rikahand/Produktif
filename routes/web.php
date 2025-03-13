@@ -9,6 +9,7 @@ use App\Http\Controllers\backend\PengalamanKerjaController;
 use App\Http\Controllers\backend\PendidikanController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\cobaController;
+use App\Http\Controllers\UploadController;
 
 Route::get('/', function () {
 
@@ -219,5 +220,10 @@ Route::get('/pegawai/{nama}', [PegawaiController::class, 'index']);
 
 Route::get('/formulir',[PegawaiController::class, 'formulir']);
 Route::post('/formulir/proses',[PegawaiController::class,'proses']);
+//Coba error
 Route::get('/Cobaerror/{nama}',[cobaController::class, 'index']);
 
+//route untuk menampilkan form upload  dan proses upload
+Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
+Route::post('/upload/proses', [UploadController::class, 'proses_upload'])
+    ->name('upload.proses');
