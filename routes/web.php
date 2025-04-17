@@ -190,9 +190,9 @@ Route::group(['prefix' => 'backend'], function() {
 // Route::get('/use', [ManagementUserController::class, 'index']);
 Route::resource('/use', ManagementUserController::class);
 
-Route::get("/home",function(){
-    return view("home");
-});
+// Route::get("/home",function(){
+//     return view("home");
+// });
 
 Route::group(['namespace'=>'App\Http\Controllers\frontend'],function()
     {
@@ -202,7 +202,7 @@ Route::group(['namespace'=>'App\Http\Controllers\frontend'],function()
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/homeee', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //buat route create session
 Route::get('/session/create', [App\Http\Controllers\SessionController::class, 'create']);
 //buat route show session
@@ -227,3 +227,8 @@ Route::get('/Cobaerror/{nama}',[cobaController::class, 'index']);
 Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
 Route::post('/upload/proses', [UploadController::class, 'proses_upload'])
     ->name('upload.proses');
+    //Acara 20
+    Route::get('/dropzone','UploadController@dropzone')
+    ->name('dropzone');
+    Route::post('/dropzone/store','UploadController@dropzone_store')
+    ->name('dropzone.store');
